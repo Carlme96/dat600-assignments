@@ -9,7 +9,7 @@ def coin_count(coins, value):
 
     
     
-    return num_coins
+    return num_coins[-1]
 
 
 if __name__ == '__main__':
