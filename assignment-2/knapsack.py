@@ -1,5 +1,4 @@
 import random
-import operator
 
 def knapsack01(items, W):
     n = len(items)
@@ -7,7 +6,7 @@ def knapsack01(items, W):
     for i in range(1, n+1):
         for w in range(1, W+1):
             if items[i-1]['weight'] <= w:
-                m[i][w] = max(items[i-1]['value'] + m[i-1][w-items[i-1]['weight']], m[i-1][w])
+                m[i][w] = max(m[i-1][w], m[i-1][w-items[i-1]['weight']] + items[i-1]['value'])
             else:
                 m[i][w] = m[i-1][w]
     
