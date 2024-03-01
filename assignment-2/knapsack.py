@@ -22,17 +22,16 @@ def knapsack01(items, W):
 def knapsackfrac(items, W):
     items = sorted(items, key=lambda x: x['value']/x['weight'], reverse=True)
     total = 0
-    knapsack = W
     solution_items = []
     
     for i, item in enumerate(items):
-        if knapsack >= item['weight']:
+        if W >= item['weight']:
             total += item['value']
             solution_items.append((i, 1))
-            knapsack -= item['weight']
+            W -= item['weight']
         else:
-            total += item['value'] * (knapsack / item['weight'])
-            solution_items.append((i, knapsack / item['weight']))
+            total += item['value'] * (W / item['weight'])
+            solution_items.append((i, W / item['weight']))
             break
     
     return total, solution_items
